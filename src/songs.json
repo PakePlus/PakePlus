@@ -1,0 +1,253 @@
+[
+    {
+        "name": "My Cookie Can-卫兰",
+        "original": "src/song/My Cookie Can-卫兰.mp3",
+        "accompaniment": "src/back/My Cookie Can-卫兰.mp3",
+        "lrc": "src/lrc/My Cookie Can-卫兰.lrc"
+    }
+    ,
+    {
+        "name": "依然爱你-王力宏",
+        "original": "src/song/依然爱你-王力宏.mp3",
+        "accompaniment": "src/back/依然爱你-王力宏.mp3",
+        "lrc": "src/lrc/依然爱你-王力宏.lrc"
+    }
+    ,
+    {
+        "name": "遇见你的时候所有星星都落到我头上-高姗",
+        "original": "src/song/遇见你的时候所有星星都落到我头上-高姗.mp3",
+        "accompaniment": "src/back/遇见你的时候所有星星都落到我头上-高姗.mp3",
+        "lrc": "src/lrc/遇见你的时候所有星星都落到我头上-高姗.lrc"
+    }
+    ,
+    {
+        "name": "勿忘-李代沫",
+        "original": "src/song/勿忘-李代沫.mp3",
+        "accompaniment": "src/back/勿忘-李代沫.mp3",
+        "lrc": "src/lrc/勿忘-李代沫.lrc"
+    }
+    ,
+    {
+        "name": "爱不单行-叶炫清",
+        "original": "src/song/爱不单行-叶炫清.mp3",
+        "accompaniment": "src/back/爱不单行-叶炫清.mp3",
+        "lrc": "src/lrc/爱不单行-叶炫清.lrc"
+    }
+    ,
+    {
+        "name": "爱的就是你-刘佳",
+        "original": "src/song/爱的就是你-刘佳.mp3",
+        "accompaniment": "src/back/爱的就是你-刘佳.mp3",
+        "lrc": "src/lrc/爱的就是你-刘佳.lrc"
+    }
+    ,
+    {
+        "name": "爱一点-王力宏_章子怡",
+        "original": "src/song/爱一点-王力宏_章子怡.mp3",
+        "accompaniment": "src/back/爱一点-王力宏_章子怡.mp3",
+        "lrc": "src/lrc/爱一点-王力宏_章子怡.lrc"
+    }
+    ,
+    {
+        "name": "别叫我达芬奇-Lil Ghost小鬼",
+        "original": "src/song/别叫我达芬奇-Lil Ghost小鬼.mp3",
+        "accompaniment": "src/back/别叫我达芬奇-Lil Ghost小鬼.mp3",
+        "lrc": "src/lrc/别叫我达芬奇-Lil Ghost小鬼.lrc"
+    }
+    ,
+    {
+        "name": "不分手的恋爱-汪苏泷",
+        "original": "src/song/不分手的恋爱-汪苏泷.mp3",
+        "accompaniment": "src/back/不分手的恋爱-汪苏泷.mp3",
+        "lrc": "src/lrc/不分手的恋爱-汪苏泷.lrc"
+    }
+    ,
+    {
+        "name": "单车恋人-后弦",
+        "original": "src/song/单车恋人-后弦.mp3",
+        "accompaniment": "src/back/单车恋人-后弦.mp3",
+        "lrc": "src/lrc/单车恋人-后弦.lrc"
+    }
+    ,
+    {
+        "name": "孤独颂歌-戴羽彤",
+        "original": "src/song/孤独颂歌-戴羽彤.mp3",
+        "accompaniment": "src/back/孤独颂歌-戴羽彤.mp3",
+        "lrc": "src/lrc/孤独颂歌-戴羽彤.lrc"
+    }
+    ,
+    {
+        "name": "光年之外-G.E.M.邓紫棋",
+        "original": "src/song/光年之外-G.E.M.邓紫棋.mp3",
+        "accompaniment": "src/back/光年之外-G.E.M.邓紫棋.mp3",
+        "lrc": "src/lrc/光年之外-G.E.M.邓紫棋.lrc"
+    }
+    ,
+    {
+        "name": "海绵宝宝-汪苏泷",
+        "original": "src/song/海绵宝宝-汪苏泷.mp3",
+        "accompaniment": "src/back/海绵宝宝-汪苏泷.mp3",
+        "lrc": "src/lrc/海绵宝宝-汪苏泷.lrc"
+    }
+    ,
+    {
+        "name": "会开花的云-姚晓棠",
+        "original": "src/song/会开花的云-姚晓棠.mp3",
+        "accompaniment": "src/back/会开花的云-姚晓棠.mp3",
+        "lrc": "src/lrc/会开花的云-姚晓棠.lrc"
+    }
+    ,
+    {
+        "name": "橘子汽水-南拳妈妈",
+        "original": "src/song/橘子汽水-南拳妈妈.mp3",
+        "accompaniment": "src/back/橘子汽水-南拳妈妈.mp3",
+        "lrc": "src/lrc/橘子汽水-南拳妈妈.lrc"
+    }
+    ,
+    {
+        "name": "妈妈陪我长大了-陈小满_庄淇玟",
+        "original": "src/song/妈妈陪我长大了-陈小满_庄淇玟.mp3",
+        "accompaniment": "src/back/妈妈陪我长大了-陈小满_庄淇玟.mp3",
+        "lrc": "src/lrc/妈妈陪我长大了-陈小满_庄淇玟.lrc"
+    }
+    ,
+    {
+        "name": "那些花儿-范玮琪",
+        "original": "src/song/那些花儿-范玮琪.mp3",
+        "accompaniment": "src/back/那些花儿-范玮琪.mp3",
+        "lrc": "src/lrc/那些花儿-范玮琪.lrc"
+    }
+    ,
+    {
+        "name": "宁夏-梁静茹",
+        "original": "src/song/宁夏-梁静茹.mp3",
+        "accompaniment": "src/back/宁夏-梁静茹.mp3",
+        "lrc": "src/lrc/宁夏-梁静茹.lrc"
+    }
+    ,
+    {
+        "name": "亲亲-梁静茹",
+        "original": "src/song/亲亲-梁静茹.mp3",
+        "accompaniment": "src/back/.mp3",
+        "lrc": "src/lrc/.lrc"
+    }
+    ,
+    {
+        "name": "如果当时-许嵩",
+        "original": "src/song/如果当时-许嵩.mp3",
+        "accompaniment": "src/back/如果当时-许嵩.mp3",
+        "lrc": "src/lrc/如果当时-许嵩.lrc"
+    }
+    ,
+    {
+        "name": "如果我们在余生相遇-RE-D_是二哈ya",
+        "original": "src/song/如果我们在余生相遇-RE-D_是二哈ya.mp3",
+        "accompaniment": "src/back/如果我们在余生相遇-RE-D_是二哈ya.mp3",
+        "lrc": "src/lrc/如果我们在余生相遇-RE-D_是二哈ya.lrc"
+    }
+    ,
+    {
+        "name": "舍得-王唯旖",
+        "original": "src/song/舍得-王唯旖.mp3",
+        "accompaniment": "src/back/舍得-王唯旖.mp3",
+        "lrc": "src/lrc/舍得-王唯旖.lrc"
+    }
+    ,
+    {
+        "name": "跳楼机-LBI利比",
+        "original": "src/song/跳楼机-LBI利比.mp3",
+        "accompaniment": "src/back/跳楼机-LBI利比.mp3",
+        "lrc": "src/lrc/跳楼机-LBI利比.lrc"
+    }
+    ,
+    {
+        "name": "无名的人-毛不易",
+        "original": "src/song/无名的人-毛不易.mp3",
+        "accompaniment": "src/back/无名的人-毛不易.mp3",
+        "lrc": "src/lrc/无名的人-毛不易.lrc"
+    }
+    ,
+    {
+        "name": "像晴天像雨天-汪苏泷",
+        "original": "src/song/像晴天像雨天-汪苏泷.mp3",
+        "accompaniment": "src/back/像晴天像雨天-汪苏泷.mp3",
+        "lrc": "src/lrc/像晴天像雨天-汪苏泷.lrc"
+    }
+    ,
+    {
+        "name": "形容-沈以诚",
+        "original": "src/song/形容-沈以诚.mp3",
+        "accompaniment": "src/back/形容-沈以诚.mp3",
+        "lrc": "src/lrc/形容-沈以诚.lrc"
+    }
+    ,
+    {
+        "name": "许愿-张茜",
+        "original": "src/song/许愿-张茜.mp3",
+        "accompaniment": "src/back/许愿-张茜.mp3",
+        "lrc": "src/lrc/许愿-张茜.lrc"
+    }
+    ,
+    {
+        "name": "阴天-莫文蔚",
+        "original": "src/song/阴天-莫文蔚.mp3",
+        "accompaniment": "src/back/阴天-莫文蔚.mp3",
+        "lrc": "src/lrc/阴天-莫文蔚.lrc"
+    }
+    ,
+    {
+        "name": "遇见-孙燕姿",
+        "original": "src/song/遇见-孙燕姿.mp3",
+        "accompaniment": "src/back/遇见-孙燕姿.mp3",
+        "lrc": "src/lrc/遇见-孙燕姿.lrc"
+    }
+    ,
+    {
+        "name": "越来越不懂-蔡健雅",
+        "original": "src/song/越来越不懂-蔡健雅.mp3",
+        "accompaniment": "src/back/越来越不懂-蔡健雅.mp3",
+        "lrc": "src/lrc/越来越不懂-蔡健雅.lrc"
+    }
+    ,
+    {
+        "name": "这世界那么多人-莫文蔚",
+        "original": "src/song/这世界那么多人-莫文蔚.mp3",
+        "accompaniment": "src/back/这世界那么多人-莫文蔚.mp3",
+        "lrc": "src/lrc/这世界那么多人-莫文蔚.lrc"
+    }
+    ,
+    {
+        "name": "走过咖啡屋-千百惠",
+        "original": "src/song/走过咖啡屋-千百惠.mp3",
+        "accompaniment": "src/back/走过咖啡屋-千百惠.mp3",
+        "lrc": "src/lrc/走过咖啡屋-千百惠.lrc"
+    }
+    ,
+    {
+        "name": "爱不单行-叶炫清",
+        "original": "src/song/爱不单行-叶炫清.mp3",
+        "accompaniment": "src/back/爱不单行-叶炫清.mp3",
+        "lrc": "src/lrc/爱不单行-叶炫清.lrc"
+    }
+    ,
+    {
+        "name": "座位-承桓",
+        "original": "src/song/座位-承桓.mp3",
+        "accompaniment": "src/back/座位-承桓.mp3",
+        "lrc": "src/lrc/座位-承桓.lrc"
+    }
+    ,
+    {
+        "name": "Beautiful Love-蔡健雅",
+        "original": "src/song/Beautiful Love-蔡健雅.mp3",
+        "accompaniment": "src/back/Beautiful Love-蔡健雅.mp3",
+        "lrc": "src/lrc/Beautiful Love-蔡健雅.lrc"
+    }
+    ,
+    {
+        "name": "New Boy-房东的猫",
+        "original": "src/song/New Boy-房东的猫.mp3",
+        "accompaniment": "src/back/New Boy-房东的猫.mp3",
+        "lrc": "src/lrc/New Boy-房东的猫.lrc"
+    }
+]
