@@ -1,22 +1,326 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <link rel="stylesheet" href="styles.css" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>PakePlus App</title>
-        <script type="module" src="/main.js" defer></script>
-    </head>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音乐播放器</title>
+    <style>
+        .container {
+            display: flex;
+            height: 100vh;
+            position: relative;
+        }
+        .playlist {
+            position: fixed;
+            width: 30%;
+            height: 100%;
+            padding: 20px;
+            background-color: #ffe4e1;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+        .playlist-buttons {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 10;
+            display: flex;
+            gap: 10px;
+        }
+        .playlist-content {
+            margin-top: 60px; /* 为固定按钮留出空间 */
+        }
+        .lyrics {
+            margin-left: 30%;
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+        }
+        .lyrics-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        #progress-container {
+            height: 8px;
+            background-color: #f0f0f0;
+            position: fixed;
+            bottom: 20px;
+            left: calc((100% - (30% - 40px)) / 2);
+            width: calc(30% - 40px);
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) inset;
+            z-index: 5; /* 确保进度条在歌词上方 */
+        }
+        #progress-bar {
+            height: 100%;
+            background: linear-gradient(to right, #FF69B4, #ff1493);
+            width: 0%;
+            border-radius: 10px;
+            transition: width 0.3s ease;
+            position: relative;
+        }
+        #progress-bar::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            background-color: #FF69B4;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .lyric-line {
+            margin-bottom: 10px;
+            padding: 5px;
+            border-radius: 3px;
+            transition: background-color 0.3s ease;
+            text-align: center; /* 歌词文本居中 */
+        }
+        .lyric-line:hover {
+            background-color: #f5f5f5;
+        }
+        .highlight {
+            color: #FF69B4;
+            font-weight: bold;
+            background-color: #fff0f5;
+        }
+        button {
+            background-color: #FF69B4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #ff1493;
+        }
+        #song-list li {
+            padding: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        #song-list li:hover {
+            background-color: #f5f5f5;
+        }
+        #time-display {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 12px;
+            color: #666;
+            right: -80px;
+            z-index: 10; /* 确保时间显示在最上层 */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="playlist">
+            <div class="playlist-buttons">
+                <button id="play-btn">播放</button>
+                <button id="toggle-btn">切换原唱/伴奏</button>
+            </div>
+            <div class="playlist-content">
+                <ul id="song-list">
+                    <li>爱你</li>
+                </ul>
+            </div>
+        </div>
+        <div class="lyrics">
+            <div class="lyrics-container">
+                <div id="progress-container">
+                    <div id="progress-bar"></div>
+                    <div id="time-display">00:00 / 00:00</div>
+                </div>
+                <div id="lyric-content"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let audio = null;
+        let lyrics = [];
+        let currentSongElement = null;
+        const playBtn = document.getElementById('play-btn');
+        const toggleBtn = document.getElementById('toggle-btn');
+        const progressContainer = document.getElementById('progress-container');
+        const progressBar = document.getElementById('progress-bar');
+        const lyricContent = document.getElementById('lyric-content');
+        const songList = document.getElementById('song-list');
 
-    <body>
-        <main class="container">
-            <h1>Welcome to PakePlus</h1>
+        function loadSongs() {
+            fetch('songs.json')
+               .then(response => response.json())
+               .then(songs => {
+                    songList.innerHTML = songs.map(song => `
+                        <li data-original="${song.original}" data-accompaniment="${song.accompaniment}" data-lrc="${song.lrc}">${song.name}</li>
+                    `).join('');
 
-            <form class="row" id="greet-form">
-                <input id="greet-input" placeholder="Enter a name..." />
-                <button type="submit">Greet</button>
-            </form>
-            <p id="greet-msg"></p>
-        </main>
-    </body>
+                    songList.querySelectorAll('li').forEach(li => {
+                        li.addEventListener('click', () => {
+                            currentSongElement = li;
+                            const originalSrc = li.dataset.original;
+                            const accompanimentSrc = li.dataset.accompaniment;
+                            const lrcPath = li.dataset.lrc;
+
+                            if (audio) {
+                                audio.pause();
+                                audio = null;
+                            }
+                            createAudio(originalSrc);
+                            loadLyrics(lrcPath);
+                            playBtn.textContent = '暂停';
+                            audio.play();
+                        });
+                    });
+                });
+        }
+
+        function loadLyrics(lrcPath) {
+            fetch(lrcPath)
+               .then(response => response.text())
+               .then(text => {
+                    const lines = text.split('\n');
+                    lyrics = [];
+                    lines.forEach(line => {
+                        const timeMatch = line.match(/\[(\d+:\d+\.\d+)\]/);
+                        if (timeMatch) {
+                            const time = parseTime(timeMatch[1]);
+                            const lyric = line.replace(/\[.*?\]/g, '').trim();
+                            lyrics.push({ time, lyric });
+                        }
+                    });
+                    renderLyrics();
+                });
+        }
+
+        function parseTime(timeStr) {
+            const parts = timeStr.split(':');
+            const minutes = parseInt(parts[0], 10);
+            const seconds = parseFloat(parts[1]);
+            return minutes * 60 + seconds;
+        }
+
+        function renderLyrics() {
+            lyricContent.innerHTML = lyrics.map((line, index) => `
+                <div class="lyric-line" data-index="${index}">${line.lyric}</div>
+            `).join('');
+        }
+
+        function syncLyrics() {
+            if (!audio) return;
+            
+            const currentTime = audio.currentTime;
+            let currentIndex = -1;
+            for (let i = 0; i < lyrics.length; i++) {
+                if (currentTime >= lyrics[i].time && (i === lyrics.length - 1 || currentTime < lyrics[i + 1].time)) {
+                    currentIndex = i;
+                    break;
+                }
+            }
+
+            document.querySelectorAll('.lyric-line').forEach((line, index) => {
+                line.classList.remove('highlight');
+            });
+            
+            if (currentIndex !== -1) {
+                const activeLine = document.querySelector(`.lyric-line[data-index="${currentIndex}"]`);
+                if (activeLine) {
+                    activeLine.classList.add('highlight');
+                    const lyricContainer = document.querySelector('.lyrics');
+                    const lineTop = activeLine.offsetTop;
+                    const containerHeight = lyricContainer.clientHeight;
+                    const lineHeight = activeLine.offsetHeight;
+                    
+                    // 计算滚动位置使当前歌词行垂直居中
+                    const scrollTop = lineTop - (containerHeight / 2) + (lineHeight / 2);
+                    lyricContainer.scrollTop = scrollTop;
+                }
+            }
+        }
+
+        function updateProgress() {
+            const timeDisplay = document.getElementById('time-display');
+            if (audio && audio.duration) {
+                const formatTime = (seconds) => {
+                    const minutes = Math.floor(seconds / 60);
+                    seconds = Math.floor(seconds % 60);
+                    return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+                };
+                timeDisplay.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
+            }
+            const progress = (audio ? audio.currentTime / audio.duration : 0) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        function seek(event) {
+            if (!audio) return;
+            
+            const rect = progressContainer.getBoundingClientRect();
+            const clickX = event.clientX - rect.left;
+            const progress = clickX / rect.width;
+            audio.currentTime = audio.duration * progress;
+        }
+
+        function createAudio(src) {
+            if (audio) {
+                audio.pause();
+                audio = null;
+            }
+            audio = new Audio(src);
+            audio.addEventListener('timeupdate', () => {
+                syncLyrics();
+                updateProgress();
+            });
+            audio.addEventListener('ended', () => {
+                playBtn.textContent = '播放';
+            });
+        }
+
+        playBtn.addEventListener('click', () => {
+            if (!audio) {
+                const firstSong = document.querySelector('#song-list li');
+                if (firstSong) {
+                    currentSongElement = firstSong;
+                    const originalSrc = firstSong.dataset.original;
+                    createAudio(originalSrc);
+                    const lrcPath = firstSong.dataset.lrc;
+                    loadLyrics(lrcPath);
+                }
+            }
+            if (audio.paused) {
+                audio.play();
+                playBtn.textContent = '暂停';
+            } else {
+                audio.pause();
+                playBtn.textContent = '播放';
+            }
+        });
+
+        toggleBtn.addEventListener('click', () => {
+            if (!currentSongElement) return;
+            
+            const currentTime = audio ? audio.currentTime : 0;
+            const newSrc = audio && audio.src.includes('back') ? 
+                currentSongElement.dataset.original : 
+                currentSongElement.dataset.accompaniment;
+            createAudio(newSrc);
+            audio.currentTime = currentTime;
+            audio.play();
+            playBtn.textContent = '暂停';
+        });
+
+        progressContainer.addEventListener('click', seek);
+
+        loadSongs();
+    </script>
+</body>
 </html>
